@@ -66,7 +66,7 @@ namespace nntpPoster
 
                     }
 
-                    MakeRarAndParFiles(toPost, toPost.NameWithoutExtension(), processedFiles, rarPassword);
+                   
 
                     List<FileToPost> filesToPost = processedFiles.GetFiles()
                         .OrderBy(f => f.Name)
