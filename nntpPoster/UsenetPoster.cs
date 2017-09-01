@@ -49,6 +49,23 @@ namespace nntpPoster
                 {
                     DateTime StartTime = DateTime.Now;
                     processedFiles = MakeProcessingFolder(toPost.NameWithoutExtension());
+
+                    var bypassRarAndPar = folderConfiguration.BypassRarAndPar;
+
+                    if (!bypassRarAndPar)
+                    {
+                        MakeRarAndParFiles(toPost, toPost.NameWithoutExtension(), processedFiles, rarPassword);
+                    }
+                    else
+                    {
+                        var filesToMove = Directory.GetFiles(toPost.FullName);
+                        foreach (var file in filesToMove)
+                        {
+                            Directory.Move(file, processedFiles.FullName + @"\" + Path.GetFileName(file));
+                        }
+
+                    }
+
                     MakeRarAndParFiles(toPost, toPost.NameWithoutExtension(), processedFiles, rarPassword);
 
                     List<FileToPost> filesToPost = processedFiles.GetFiles()

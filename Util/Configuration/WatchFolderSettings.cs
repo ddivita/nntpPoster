@@ -25,7 +25,7 @@ namespace Util.Configuration
         public Boolean ApplyRandomPassword { get; set; }
         public String RarPassword { get; set; }
         public Int32 Priority { get; set; }
-
+        public bool BypassRarAndPar { get; set; }
 
         private String previousNewsGroup;
         public List<String> GetTargetNewsGroups()
